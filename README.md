@@ -10,7 +10,7 @@ Zanimalo me bo tudi ali je več samomorov med ženskami ali moškimi.
 Primerjala bom umrle po starostnih skupinah glede na zakonski stan in izobrazbo, pogledala pa bom tudi ali je več smrti v zimskem letnem času.
 
 ### Podatki
-Svoje podatke bom črpala s strani [SiStat](https://pxweb.stat.si/SiStat/sl) v obliki CSV datotek ter v HTML obliki. Shranjeni so v mapi [podatki].(https://github.com/sarazuzek/APPR-2021-22/tree/main/podatki)
+Svoje podatke bom črpala s strani [SiStat](https://pxweb.stat.si/SiStat/sl) v obliki CSV datotek ter v HTML obliki. Shranjeni so v mapi [podatki](https://github.com/sarazuzek/APPR-2021-22/tree/main/podatki).
 
 ### Tabele
 Tabela 1: Umrli po dnevu smrti
