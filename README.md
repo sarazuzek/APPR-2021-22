@@ -8,9 +8,10 @@ V projektu bom analizirala smrti v Sloveniji med leti 2010-2020.
 Primerjala bom število umrlih po spolu v posameznih občinah in regijah, pri regijah bom analizirali tudi najpogostejše vzroke za smrt glede na starostne skupine in povprečno starost umrlega.
 Zanimalo me bo tudi ali je več samomorov med ženskami ali moškimi.
 Primerjala bom umrle po starostnih skupinah glede na zakonski stan in izobrazbo, pogledala pa bom tudi ali je več smrti v zimskem letnem času.
+Analizirala bom tudi število samomorov po svetu in primerjala glede na BDP.
 
 ### Podatki
-Svoje podatke bom črpala s strani [SiStat](https://pxweb.stat.si/SiStat/sl). v obliki CSV datotek ter v HTML obliki. Shranjeni so v mapi [podatki](https://github.com/sarazuzek/APPR-2021-22/tree/main/podatki)
+Svoje podatke bom črpala s strani [SiStat](https://pxweb.stat.si/SiStat/sl) in [OECD data](https://data.oecd.org/) v obliki CSV datotek ter v HTML obliki. Shranjeni so v mapi [podatki](https://github.com/sarazuzek/APPR-2021-22/tree/main/podatki)
 
 ### Tabele
 Tabela 1: Umrli po dnevu smrti
@@ -40,25 +41,37 @@ Tabela 4: Umrli po starostnih skupinah glede na zakonski stan in izobrazbo
 * spol (factor)
 * zakonski stan (character)
 * izobrazba (character)
+* št. umrlih (integer)
 
 Tabela 5: Nezgode in samomori
 * leto (integer)
 * starostna skupina (factor)
 * spol (factor)
-* nezgode - transport (integer)
-* padci (integer)
-* druge nezgode (integer)
-* samomori (integer)
+* št. umrlih (integer)
+* vzrok smrti (character)
+** nezgode - transport 
+** padci 
+** druge nezgode 
+** samomori 
 
 Tabela 6: Najpogostejši vzrok smrti 
 * leto (integer)
 * spol (factor)
 * regija (character)
-* infekcijske in parazitske bolezni (character)
-* neoplazme (character)
-* bolezni obtočil (character)
-* bolezni dihal (character)
-* poškodbe, zastrupitve in druge posledice zunanjih vzrokov (character)
+* št. umrlih (integer)
+* vzrok smrti (character) 
+** infekcijske in parazitske bolezni
+** neoplazme 
+** bolezni obtočil 
+** bolezni dihal 
+** poškodbe, zastrupitve in druge posledice zunanjih vzrokov
+
+Tabela 7: Samomori po svetu na 100.000 prebivalcev
+* država (character)
+* leto (integer)
+* stopnja samomorov (double)
+* BDP na prebivalca (integer)
+* 
 
 ## Program
 
