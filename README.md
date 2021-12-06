@@ -11,7 +11,11 @@ Primerjala bom umrle po starostnih skupinah glede na zakonski stan in izobrazbo,
 Analizirala bom tudi število samomorov po svetu in primerjala glede na BDP.
 
 ### Podatki
+<<<<<<< HEAD
 Svoje podatke bom črpala s strani [SiStat](https://pxweb.stat.si/SiStat/sl) in [OECD data](https://data.oecd.org/) v obliki CSV datotek ter v HTML obliki. Shranjeni so v mapi [podatki](https://github.com/sarazuzek/APPR-2021-22/tree/main/podatki)
+=======
+Svoje podatke bom črpala s strani [SiStat](https://pxweb.stat.si/SiStat/sl) v obliki CSV datotek ter v HTML obliki. Shranjeni so v mapi [podatki](https://github.com/sarazuzek/APPR-2021-22/tree/main/podatki).
+>>>>>>> 2823772562ab5afe21a6acfde273610a03a97d79
 
 ### Tabele
 Tabela 1: Umrli po dnevu smrti
