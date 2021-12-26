@@ -7,7 +7,7 @@ Vzorčni repozitorij za projekt pri predmetu APPR v študijskem letu 2021/22.
 V projektu bom analizirala smrti v Sloveniji med leti 2010-2020. 
 Primerjala bom število umrlih po spolu v posameznih občinah in regijah, pri regijah bom analizirali tudi najpogostejše vzroke za smrt glede na starostne skupine in povprečno starost umrlega.
 Zanimalo me bo tudi ali je več samomorov med ženskami ali moškimi.
-Primerjala bom umrle po starostnih skupinah glede na zakonski stan in izobrazbo, pogledala pa bom tudi ali je več smrti v zimskem letnem času.
+Primerjala bom umrle po starostnih skupinah glede na zakonski stan in izobrazbo.
 Analizirala bom tudi število samomorov po svetu in primerjala glede na BDP.
 
 ### Podatki
@@ -15,14 +15,7 @@ Analizirala bom tudi število samomorov po svetu in primerjala glede na BDP.
 Svoje podatke bom črpala s strani [SiStat](https://pxweb.stat.si/SiStat/sl) in [OECD data](https://data.oecd.org/) v obliki CSV datotek ter v HTML obliki. Shranjeni so v mapi [podatki](https://github.com/sarazuzek/APPR-2021-22/tree/main/podatki).
 
 ### Tabele
-Tabela 1: Umrli po dnevu smrti
-* leto (integer)
-* mesec (integer)
-* dan (integer)
-* letni čas (character)
-* število umrlih (integer)
-
-Tabela 2: Umrli/umrli dojenčki na 1000 prebivalcev/živorojenih in povprečna starost umrlega, statistične regije
+Tabela 1: Umrli/umrli dojenčki na 1000 prebivalcev/živorojenih in povprečna starost umrlega, statistične regije
 * leto (integer)
 * regija (character)
 * spol (factor)
@@ -30,13 +23,13 @@ Tabela 2: Umrli/umrli dojenčki na 1000 prebivalcev/živorojenih in povprečna s
 * umrli na 1000 prebivalcev (double)
 * umrli dojenčki na 1000 živorojenih (double)
 
-Tabela 3: Število umrlih po občinah
+Tabela 2: Število umrlih po občinah
 * občina (character)
 * leto (integer)
 * spol (factor)
 * število umrlih (integer)
 
-Tabela 4: Umrli po starostnih skupinah glede na zakonski stan in izobrazbo
+Tabela 3: Umrli po starostnih skupinah glede na zakonski stan in izobrazbo
 * leto (integer)
 * starostna skupina (factor)
 * spol (factor)
@@ -44,21 +37,21 @@ Tabela 4: Umrli po starostnih skupinah glede na zakonski stan in izobrazbo
 * izobrazba (character)
 * št. umrlih (integer)
 
-Tabela 5: Nezgode in samomori
+Tabela 4: Nezgode in samomori
 * leto (integer)
 * starostna skupina (factor)
 * spol (factor)
 * št. umrlih (integer)
 * vzrok smrti (character)
 
-Tabela 6: Najpogostejši vzrok smrti 
+Tabela 5: Najpogostejši vzrok smrti 
 * leto (integer)
 * spol (factor)
 * regija (character)
 * št. umrlih (integer)
 * vzrok smrti (character) 
 
-Tabela 7: Samomori po svetu na 100.000 prebivalcev
+Tabela 6: Samomori po svetu na 100.000 prebivalcev
 * država (character)
 * leto (integer)
 * stopnja samomorov (double)
