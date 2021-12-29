@@ -146,7 +146,9 @@ obcine$obcina = l
 p = str_replace_all(obcine$obcina, "Piran/Pirano", "Piran")
 obcine$obcina = p
 
-
+#kako narediti, da bi napisala le eno fukncijo ki bi spremenila vse na kmal
+#vzorec = "^[:alpha:][/][:alpha:]$"
+#obcine$obcina = str_replace_all(obcine$obcina, vzorec, "\\3")
 
 ################################# 3.tabela #################################
 #1.tabela
