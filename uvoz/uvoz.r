@@ -209,11 +209,11 @@ oznaka_izobrazbe = tibble(
                 "Srednješolska",
                 "Višješolska, visokošolska",
                 "Neznano"),
-  lepse = c("Brez",
+  lepse = c("brez",
             "OS",
             "SS",
             "VS",
-            "Neznano")
+            "neznano")
 )
 
 
@@ -232,7 +232,55 @@ skupaj$stevilo.umrlih.izobrazba[is.na(skupaj$stevilo.umrlih.izobrazba)] <- "ni.p
 
 
 ################################# 4.tabela #################################
-# nezgode_samomori = iz spletne strani
+stran <- read_html("https://pxweb.stat.si:443/SiStatData/sq/8589",
+                               locale = locale(encoding = "UTF-8"))
+
+nezgode_samomori <- stran %>%
+  html_nodes(xpath="//table") %>%
+  .[[1]] %>%
+  html_table(fill = TRUE) %>%
+  rename(
+    spol=1,
+    starostne.skupine=2,
+    leto=3
+  ) %>%
+  slice(-1)
+
+nezgode_samomori <- pivot_longer(nezgode_samomori,
+                                 cols = colnames(nezgode_samomori)[-c(1,2,3)],
+                                 names_to = "vzrok",
+                                 values_to = "stevilo.umrlih")
+
+nezgode_samomori <- nezgode_samomori %>% left_join(oznaka_spolov, by = c("spol"))
+nezgode_samomori <- nezgode_samomori %>% select(spol = oznaka, starostne.skupine, leto, vzrok, stevilo.umrlih)
+
+oznaka_vzrok = tibble(
+  vzrok = c(
+    "Nezgode - Transportne nezgode",
+    "Nezgode - Padci",
+    "Nezgode - Druge nezgode",
+    "Samomori - SKUPAJ"),
+  lepse = c(
+    "transportne.nezgode",
+    "padci",
+    "druge.nezgode",
+    "samomori")
+)
+
+nezgode_samomori <- nezgode_samomori %>% left_join(oznaka_vzrok, by = c("vzrok"))
+nezgode_samomori <- nezgode_samomori %>% select(spol, starostne.skupine, leto, vzrok = lepse, stevilo.umrlih)
+
+vektor_skupin2 <- unique(nezgode_samomori$starostne.skupine) %>% sort()
+
+oznaka_starostnih_skupin2 = tibble(
+  starostne.skupine = vektor_skupin2,
+  lepse = c("0-9", "10-19", "20-24","25-29", "30-34", "35-39", "40-44", "45-49", "50-54",
+            "55-59", "60-64", "65-69", "70-74", "75-79", "80+")
+)
+
+nezgode_samomori <- nezgode_samomori %>% left_join(oznaka_starostnih_skupin2, by = c("starostne.skupine"))
+nezgode_samomori <- nezgode_samomori %>% select(spol, starostne.skupine = lepse, leto, vzrok, stevilo.umrlih)
+
 
 
 ################################# 5.tabela #################################
@@ -262,6 +310,24 @@ vzrok_smrti$vzrok = lepse
 vzrok_smrti <- vzrok_smrti %>% left_join(oznaka_spolov, by = c("spol"))
 vzrok_smrti <- vzrok_smrti %>% select(spol = oznaka, regija, leto, vzrok, stevilo.umrlih)
 
+vektor_vzrokov <- unique(vzrok_smrti$vzrok) %>% sort()
+
+oznaka_vzrokov = tibble(
+  vzrok = vektor_vzrokov,
+  lepse = c("bolezni.dihal",
+            "bolezni.obtocil",
+            "bolezni.prebavil",
+            "na.1000.prebivalcev.dihala",
+            "na.1000.prebivalcev.obtocila",
+            "na.1000.prebivalcev.prebavila",
+            "na.1000.prebivalcev.neoplazme",
+            "na.1000.prebivalcev.zunanji.vzroki",
+            "neoplazme",
+            "poskodbe.zastrupitve.zunanji.vzroki")
+  )
+
+vzrok_smrti <- vzrok_smrti %>% left_join(oznaka_vzrokov, by = c("vzrok"))
+vzrok_smrti <- vzrok_smrti %>% select(spol, regija, leto, vzrok = lepse, stevilo.umrlih)
 
 ################################# 6.tabela #################################
 #1.tabela
@@ -293,3 +359,12 @@ svet$umrli[is.na(svet$umrli)] <- "ni.podatka"
 
 svet$vrednost.bdp <- as.character(svet$vrednost.bdp)
 svet$vrednost.bdp[is.na(svet$vrednost.bdp)] <- "ni.podatka"
+
+
+#Izvoz v CSV
+write.csv2(regije, "podatki/regije_tidy.csv", fileEncoding = "UTF-8")
+write.csv2(obcine, "podatki/obcine_tidy.csv", fileEncoding = "UTF-8")
+write.csv2(skupaj, "podatki/skupaj_tidy.csv", fileEncoding = "UTF-8")
+write.csv2(nezgode_samomori, "podatki/nezgode_samomori_tidy.csv", fileEncoding = "UTF-8")
+write.csv2(vzrok_smrti, "podatki/vzrok_smrti_tidy.csv", fileEncoding = "UTF-8")
+write.csv2(svet, "podatki/svet_tidy.csv", fileEncoding = "UTF-8")
